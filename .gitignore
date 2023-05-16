@@ -1,7 +1,5 @@
 cnab-api/.bundle
 /.project
-cnab-api/db/*.sqlite3
-cnab-api/db/*.sqlite3-journal
 cnab-api/log/*.log
 cnab-api/tmp/**/*
 cnab-api/public/uploads/*

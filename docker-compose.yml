@@ -20,8 +20,11 @@ services:
       - 3030:3030
     depends_on:
       - db
-    links:
-      - db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST: db
+
 
   cnab-client: &cnab-client
     build: cnab-client
