@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'd9d5747f1c5adced6363a74dc40f22672ef486da5dc1d1fba655197d71788ee88188c04277117f3adcc62eb50ea0e670952a91f2621b313946d4c42d9caf47fe'
+  # config.secret_key = '765bdc462abe5df734bb3766f8a72d8f5e08e129f5e0518220e9588287af5586c748acd909c1205adff065c315de0feaaa820f7096e19e9cf469d292a39eed9f'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -24,7 +24,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  # config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'default@helpevent.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '18d3bb98ac7c7176ace96c7dd820bb4e3bc06383987bf893f049578c573aed0491e0f72ed7d6af6e2af2e702378406c9d814482b03e4ebd798b2a58525a9a7c9'
+  # config.pepper = 'a271f587aae56b052dea5952985725be5a56657682f087b397f3a01119beaf8f6e827c6c69ef1941d30d6edfcc51c6ab18bf56fde86b071c7abcaa2afabd120c'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -157,7 +157,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  config.reconfirmable = false
+  config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]
@@ -178,7 +178,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 6..128
+  config.password_length = 8..128
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
@@ -263,7 +263,7 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  # config.navigational_formats = ['*/*', :html, :turbo_stream]
+  config.navigational_formats = [:json]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
@@ -304,7 +304,6 @@ Devise.setup do |config|
   # Note: These might become the new default in future versions of Devise.
   config.responder.error_status = :unprocessable_entity
   config.responder.redirect_status = :see_other
-
   # ==> Configuration for :registerable
 
   # When set to false, does not sign a user in automatically after their password is

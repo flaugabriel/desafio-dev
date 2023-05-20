@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
 	include DeviseTokenAuth::Concerns::SetUserByToken
+	serialization_scope :current_user
 
 	before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -10,6 +11,6 @@ class ApplicationController < ActionController::API
 	protected
 
   def configure_permitted_parameters
-		devise_parameter_sanitizer.permit(:account_update, keys: %i[name last_name nickname])
+		devise_parameter_sanitizer.permit(:account_update, keys: %i[email password])
   end
 end

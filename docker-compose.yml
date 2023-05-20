@@ -13,6 +13,7 @@ services:
   cnab-api: &cnab-api
     build: cnab-api
     tty: true
+    stdin_open: true
     command: bash start.sh
     volumes:
       - ./cnab-api:/cnab-api
