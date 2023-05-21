@@ -1,14 +1,24 @@
 class Api::V1::MyaccountController < ApiController
+  before_action :set_params, only: :update
 
   def profile
     render json: { data: current_user }, status: :ok
   end
 
-  def validate_session
-    if user_signed_in?
-      render json: { message: 'Session valid.' }, status: :ok
+  def update
+    
+    binding.pry
+    
+    if current_user.update(set_params)
+      render json: { message: 'Perfil atualizado.' }, status: :ok
     else
-      render json: { error: 'Sesion invalid.' }, status: :unauthorized
+      render json: { error: current_user.errors.full_messages.to_sentence }, status: :unprocessable_entity
     end
+  end
+
+  private
+
+  def set_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end

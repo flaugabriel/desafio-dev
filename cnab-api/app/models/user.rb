@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
 
   validates_presence_of :email, on: :create, message: 'não pode fica em branco'
   validates_uniqueness_of :email, on: :create, message: 'deve ser unico'
+
+  has_one :cnab
 end
