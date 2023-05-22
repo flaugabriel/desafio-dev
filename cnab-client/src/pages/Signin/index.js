@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import * as C from "./styles";
 import { Link, useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
+import { signin } from '../../operations/auth';
 
 const Signin = () => {
-  const { signin } = useAuth();
   const navigate = useNavigate();
-
+  const [signed, setSigned] = useState(false)
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
@@ -16,22 +15,33 @@ const Signin = () => {
   const handleLogin = () => {
     if (!email | !senha) {
       setError("Preencha todos os campos");
-      return;
+    }else{
+      signin(email, senha).then((response) => {
+        if (response.data.status === 404) {
+          alert(response.data.errors[0]);
+        }else{
+          localStorage.removeItem("authorization");
+          localStorage.setItem("authorization", response.headers['authorization']);
+          alert('Bem vindo!');
+          setSigned(true)
+        }
+      }).catch(function (error) {
+        alert(error.response.data.errors[0]);
+      });
     }
-
-    const res = signin(email, senha);
-
-    if (res) {
-      setError(res);
-      return;
-    }
-
-    navigate("/home");
   };
+
+  useEffect(() => {
+    if (signed) {
+      navigate('/home')
+    }else{
+      navigate('/')
+    }
+  },[signed]);
 
   return (
     <C.Container>
-      <C.Label>DESAFIO DEV CNAB (login)</C.Label>
+      <C.Label>LOGIN - DESAFIO DEV CNAB APP</C.Label>
       <C.Content>
         <Input
           type="email"

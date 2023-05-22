@@ -1,18 +1,22 @@
 import { Fragment } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
 import Home from "../pages/Home";
 import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
 
-const Private = ({ Item }) => {
-  const { signed } = useAuth();
 
-  console.log('signed', signed);
-  return signed > 0 ? <Item /> : <Signin />;
+const Private = ({ Item }) => {
+  var signed = false;
+  const authorization = localStorage.getItem("authorization");
+  if (authorization) {
+    signed = true
+  }
+
+  return signed  ? <Item /> : <Signin />;
 };
 
 const RoutesApp = () => {
+
   return (
     <BrowserRouter>
       <Fragment>

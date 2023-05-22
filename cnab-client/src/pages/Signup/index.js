@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import * as C from "./styles";
-import { Link, useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
+import { signup } from '../../operations/auth';
+import { signout } from '../../operations/auth';
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -11,33 +12,30 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [password_confirmation, setPasswordConfirmation] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
-
-  const { signup } = useAuth();
 
   const handleSignup = () => {
     if (!email | !emailConf | !password | !password_confirmation) {
       setError("Preencha todos os campos");
-      return;
     } else if (email !== emailConf) {
       setError("Os e-mails não são iguais");
-      return;
     }
 
-    const res = signup(email, password, password_confirmation);
-
-    if (res) {
-      console.log('res',res);
-      setError(res);
-      return;
-    }else{
-      navigate("/");
-    }
+    signup(email, password, password_confirmation).then((response) => {
+      if (response.data.status === 404) {
+        alert('Verifique se o servidor esta disponivel ou tente mas tarde.');
+        signout()
+      }else{
+        alert('Cadastro realizado! \nPor favor realize o login!');
+      }
+    }).catch(function (error) {
+      alert(error.response.data.errors.full_messages[0]);
+      signout()
+    });;
   };
 
   return (
     <C.Container>
-      <C.Label>SISTEMA DE LOGIN</C.Label>
+      <C.Label>REGISTRE-SE - DESAFIO DEV CNAB APP</C.Label>
       <C.Content>
         <Input
           type="email"

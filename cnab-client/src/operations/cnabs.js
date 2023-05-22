@@ -35,4 +35,4 @@ export const delete_all = (authorization) =>
     },
   })
 
-export default [delete_all]
+export default [delete_all, upload, index]

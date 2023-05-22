@@ -91,7 +91,7 @@ O objetivo é digitalizar a emissão e a baixa dos pagamentos, de forma que os d
 
 Foram proposto os seguintes desafios
 
-[] Ter uma tela (via um formulário) para fazer o upload do arquivo(pontos extras se não usar um popular CSS Framework )
+[x] Ter uma tela (via um formulário) para fazer o upload do arquivo(pontos extras se não usar um popular CSS Framework )
 [x] Interpretar ("parsear") o arquivo recebido, normalizar os dados, e salvar corretamente a informação em um banco de dados relacional, **se atente as documentações** que estão logo abaixo.
 [] Exibir uma lista das operações importadas por lojas, e nesta lista deve conter um totalizador do saldo em conta
 [x] Ser escrita na sua linguagem de programação de preferência
@@ -103,9 +103,9 @@ Foram proposto os seguintes desafios
 [] Readme file descrevendo bem o projeto e seu setup
 [] Incluir informação descrevendo como consumir o endpoint da API
 
-## Como configura este projeto ? 🔨
-
-### Banco de dados PostgresSQL :game_die:
+## Preparação de como configura este projeto ? 🔨
+OBS: Para os requisitos nescessario para executa esse projeto é preciso do docker/docker-compose, nas versões mais atuais.  Dependendo da versão de sua maquina o comando de ação muda verções mais antigas 2022 estão operando com a sintaxe
+```shel docker-compose ``` já as mais atuais é ```shel docker compose ```. 
 
 #### Setup 
 Na raiz do projeto desafio-dev execute:
@@ -123,4 +123,14 @@ docker compose run --rm cnab-api rails db:create db:migrate db:seed
 ```
 Acesse [localhost:3000](localhost:3000) Para visualiza a plataforma pagina de login ou Realize um Cadastro usando esse link http://localhost:3000/users/sign_up
 
+#### Testes 
+
+Configurando o banco de dados
+```shell
+docker compose run --rm cnab-api rails ENVIROMENT=test db:seed
+```
+Executando todos os testes
+```shell
+docker compose run --rm cnab-api rspec
+```
 ### Fim Obrigado! :D 🚀
