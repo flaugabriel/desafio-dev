@@ -1,6 +1,6 @@
 class Api::V1::CnabsController < ApiController
   def index
-    cnabs = Cnab.where(user_id: current_user.id)
+    cnabs = Cnab.includes(:deal, :user, :store).where(user_id: current_user.id)
 
     return json_error_response('Não foi encontrado CNABs', :not_found) unless cnabs.present?
 

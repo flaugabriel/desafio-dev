@@ -9,6 +9,7 @@ WORKDIR /var/www/html
 COPY start-client.sh $APP_HOME
 COPY package.json $APP_HOME
 COPY package-lock.json $APP_HOME
+COPY yarn.lock $APP_HOME
 
 RUN npm config delete proxy
 RUN npm i

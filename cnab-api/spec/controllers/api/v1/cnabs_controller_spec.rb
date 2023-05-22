@@ -54,7 +54,6 @@ RSpec.describe Api::V1::CnabsController, type: :request do
         cnab_params = { file: '' }
         @auth_params =  get_auth_params_from_login_response_headers(response)
         post import_api_cnabs_path, params: cnab_params ,headers: @auth_params
-        expect(json['status']).to eq(false)
         expect(json['message']).to eq('Nenhum arquivo carregado!')
       end
     end

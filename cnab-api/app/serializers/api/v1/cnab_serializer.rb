@@ -4,4 +4,12 @@ class Api::V1::CnabSerializer < ActiveModel::Serializer
   has_one :deal
   has_one :user
   has_one :store
+
+  def date_occurrence
+    object.date_occurrence.strftime('%d/%m/%Y') || ''
+  end
+
+  def type_cnabs
+    object.deal.description || ''
+  end
 end
