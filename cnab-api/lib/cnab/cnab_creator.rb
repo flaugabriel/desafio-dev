@@ -6,7 +6,7 @@ class CnabCreator
       value: new_total,
       card: card,
       hours: hours,
-      deal_id: type_cnabs,
+      deal_id: deal,
       store_id: store_id,
       user_id: user_id
     )

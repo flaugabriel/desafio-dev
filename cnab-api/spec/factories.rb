@@ -30,9 +30,9 @@ FactoryBot.define do
       'Recebimento TED',
       'Recebimento DOC',
       'Aluguel'
-    ][rand(1...9)] }
-    nature { ['Entrada','Saída'][rand(1..2)] }
-    signal { ['+','-'][rand(1...3)] }
+    ][rand(0...9)] }
+    nature { ['Entrada','Saída'][rand(0...2)] }
+    signal { ['+','-'][rand(0...2)] }
   end
 
   factory :user do
