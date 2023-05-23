@@ -6,9 +6,6 @@ class Api::V1::MyaccountController < ApiController
   end
 
   def update
-    
-    binding.pry
-    
     if current_user.update(set_params)
       render json: { message: 'Perfil atualizado.' }, status: :ok
     else
