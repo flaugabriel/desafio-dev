@@ -6,7 +6,6 @@ DeviseTokenAuth.setup do |config|
   # this to false to prevent the Authorization header from changing after
   # each request.
 
-
   # ACTIVE THIS LINE FOR TRUE WHEN PUT IN PRODUCTION
   config.change_headers_on_each_request = false
 

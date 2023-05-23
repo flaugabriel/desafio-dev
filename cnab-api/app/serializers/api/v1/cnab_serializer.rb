@@ -1,15 +1,21 @@
-class Api::V1::CnabSerializer < ActiveModel::Serializer
-  attributes :id, :type_cnabs, :date_occurrence, :value, :card, :hours
+# frozen_string_literal: true
 
-  has_one :deal
-  has_one :user
-  has_one :store
+module Api
+  module V1
+    class CnabSerializer < ActiveModel::Serializer
+      attributes :id, :type_cnabs, :date_occurrence, :value, :card, :hours
 
-  def date_occurrence
-    object.date_occurrence.strftime('%d/%m/%Y') || ''
-  end
+      has_one :deal
+      has_one :user
+      has_one :store
 
-  def type_cnabs
-    object.deal.description || ''
+      def date_occurrence
+        object.date_occurrence.strftime('%d/%m/%Y') || ''
+      end
+
+      def type_cnabs
+        object.deal.description || ''
+      end
+    end
   end
 end

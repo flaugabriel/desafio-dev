@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 FactoryBot.define do
   factory :cnab do
@@ -5,9 +6,9 @@ FactoryBot.define do
     value { Faker::Commerce.price }
     card { '4587' }
     hours { '172712' }
-    deal { FactoryBot.create(:deal)}
-    user { FactoryBot.create(:user)}
-    store { FactoryBot.create(:store)}
+    deal { FactoryBot.create(:deal) }
+    user { FactoryBot.create(:user) }
+    store { FactoryBot.create(:store) }
     type_cnabs { 1 }
   end
 
@@ -20,23 +21,25 @@ FactoryBot.define do
 
   factory :deal do
     type_transaction { rand(1...9) }
-    description {    [
-      'Débito',
-      'Boleto',
-      'Financiamento',
-      'Crédito',
-      'Recebimento Empréstimo',
-      'Vendas',
-      'Recebimento TED',
-      'Recebimento DOC',
-      'Aluguel'
-    ][rand(0...9)] }
-    nature { ['Entrada','Saída'][rand(0...2)] }
-    signal { ['+','-'][rand(0...2)] }
+    description do
+      [
+        'Débito',
+        'Boleto',
+        'Financiamento',
+        'Crédito',
+        'Recebimento Empréstimo',
+        'Vendas',
+        'Recebimento TED',
+        'Recebimento DOC',
+        'Aluguel'
+      ][rand(0...9)]
+    end
+    nature { %w[Entrada Saída][rand(0...2)] }
+    signal { ['+', '-'][rand(0...2)] }
   end
 
   factory :user do
     email { Faker::Omniauth.google[:info][:email] }
-    password { '12345678'}
+    password { '12345678' }
   end
 end

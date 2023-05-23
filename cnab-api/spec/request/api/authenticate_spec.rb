@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 include ActionController::RespondWith
 
 describe 'Whether access is ocurring properly', type: :request do
   let(:current_user) { create(:user) }
-  
+
   context 'context: general authentication via API, ' do
     it 'gives you an authentication code if you are an existing user and you satisfy the password' do
       login current_user
@@ -29,6 +31,7 @@ describe 'Whether access is ocurring properly', type: :request do
   end
 
   def login(current_user)
-    post api_user_session_path, params:  { email: current_user.email, password: current_user.password }.to_json, headers: { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    post api_user_session_path, params: { email: current_user.email, password: current_user.password }.to_json,
+                                headers: { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
   end
 end

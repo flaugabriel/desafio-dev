@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CnabSerializer
   def self.serialize_cnab(line)
     documents = [

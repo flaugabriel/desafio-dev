@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class FileHandler
   def self.open_spreadsheet(cnab_params)
     process = { path: '', message: '', file_status: false }
-    
+
     if cnab_params && cnab_params != ''
       case File.extname(cnab_params.original_filename)
       when '.txt'

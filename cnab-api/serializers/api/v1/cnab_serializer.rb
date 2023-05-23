@@ -1,2 +1,8 @@
-class Api::V1::Cnab < ActiveModel::Serializer
+# frozen_string_literal: true
+
+module Api
+  module V1
+    class Cnab < ActiveModel::Serializer
+    end
+  end
 end

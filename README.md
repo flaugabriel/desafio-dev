@@ -112,7 +112,7 @@ docker compose up
 ```
 Configurando o banco de dados
 ```shell
-docker compose run --rm cnab-api rails db:create db:migrate db:seed
+docker compose run --rm cnab-api rails db:drop db:create db:migrate db:seed
 ```
 Acesse [localhost:3000](localhost:3000) Para visualiza a ir a de login ou Realize um Cadastro usando esse link http://localhost:3000/signup
 

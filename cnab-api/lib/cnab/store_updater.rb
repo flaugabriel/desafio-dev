@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StoreUpdater
   def self.update_store(store, store_owner, store_name, signal, new_total)
     store.update(
