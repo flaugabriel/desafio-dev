@@ -122,7 +122,7 @@ Nota: esta api se encontra preparada para versionamento. (plus)
 
 * POST http://localhost:3030/api/auth/sign_in (LOGIN)
 
-* POST http://localhost:3030/api/v1/veiculos (CADASTRO DE USUÁRIO)
+* POST http://localhost:3030/api/v1/sign_up (CADASTRO DE USUÁRIO)
 
 ### Rotas users
 
